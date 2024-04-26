@@ -30,7 +30,10 @@ class _WeatherPageState extends State<WeatherPage> {
 
     //any errors
     catch(e){
-      print(e);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Une erreur s'est produite: $e"
+      ),
+        ));
     }
   }
   // weather animation
@@ -68,15 +71,23 @@ class _WeatherPageState extends State<WeatherPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[800],
+      backgroundColor: Colors.transparent,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(_weather?.cityName ?? "Loading city.."),
+            Text(_weather?.cityName ?? "Loading city..", style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 70,
+              color: Colors.white
+            ),
+            ),
             Lottie.asset(getWeatherAnimation(_weather?.mainCondition)),
-            Text('${_weather?.temperature.round()}°C'),
-          ],
+            Text('${_weather?.temperature.round()}°C', style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 50,
+              color: Colors.white
+            ))],
         ),
       ),
     );
