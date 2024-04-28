@@ -73,21 +73,23 @@ class _WeatherPageState extends State<WeatherPage> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(_weather?.cityName ?? "Loading city..", style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 70,
-              color: Colors.white
-            ),
-            ),
-            Lottie.asset(getWeatherAnimation(_weather?.mainCondition)),
-            Text('${_weather?.temperature.round()}°C', style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 50,
-              color: Colors.white
-            ))],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(_weather?.cityName ?? "Loading city..", style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 70,
+                color: Colors.white
+              ),
+              ),
+              Lottie.asset(getWeatherAnimation(_weather?.mainCondition)),
+              Text('${_weather?.temperature.round()}°C', style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 50,
+                color: Colors.white
+              ))],
+          ),
         ),
       ),
     );
